@@ -13,10 +13,13 @@ Example:
 """
 
 import json
+import logging
 from typing import Optional, Dict, Any, List
 from datetime import datetime, timezone
 
 from .http import ThreadLocalSessionMixin
+
+logger = logging.getLogger(__name__)
 
 
 class GammaClient(ThreadLocalSessionMixin):
@@ -65,7 +68,8 @@ class GammaClient(ThreadLocalSessionMixin):
             if response.status_code == 200:
                 return response.json()
             return None
-        except Exception:
+        except Exception as e:
+            logger.warning(f"Failed to fetch market by slug '{slug}': {e}")
             return None
 
     def get_current_15m_market(self, coin: str) -> Optional[Dict[str, Any]]:

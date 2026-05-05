@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymarket Trading Bot</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #30363d;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            color: #58a6ff;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #8b949e;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .feature-card h3 {
+            color: #58a6ff;
+            margin-bottom: 0.5rem;
+        }
+        .feature-card p {
+            color: #8b949e;
+            font-size: 0.95rem;
+        }
+        section {
+            margin: 3rem 0;
+        }
+        section h2 {
+            color: #f0f6fc;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #30363d;
+        }
+        .code-block {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.875rem;
+            color: #79c0ff;
+            margin: 1rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+        th {
+            color: #58a6ff;
+            background: #161b22;
+        }
+        .badge {
+            display: inline-block;
+            background: #1f6feb;
+            color: #fff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin: 0.2rem;
+        }
+        .badge.green { background: #238636; }
+        .badge.purple { background: #8957e5; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #30363d;
+            color: #484f58;
+            font-size: 0.85rem;
+        }
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Polymarket Trading Bot</h1>
+        <p>A beginner-friendly Python trading bot for Polymarket with gasless transactions and real-time WebSocket data.</p>
+        <div style="margin-top:1rem;">
+            <a href="https://github.com/discountry/polymarket-trading-bot" style="background:#238636;color:#fff;padding:0.6rem 1.2rem;border-radius:6px;font-weight:600;">View on GitHub</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="features">
+            <div class="feature-card">
+                <h3>Simple API</h3>
+                <p>Just a few lines of code to start trading on Polymarket prediction markets.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Gasless Transactions</h3>
+                <p>No gas fees with Builder Program credentials. Trade without worrying about gas costs.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Real-time WebSocket</h3>
+                <p>Live orderbook updates via WebSocket for real-time market data streaming.</p>
+            </div>
+            <div class="feature-card">
+                <h3>15-Minute Markets</h3>
+                <p>Built-in support for BTC/ETH/SOL/XRP 15-minute Up/Down markets.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Flash Crash Strategy</h3>
+                <p>Pre-built strategy for volatility trading with configurable parameters.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Fully Tested</h3>
+                <p>89 unit tests covering all functionality with CI/CD pipeline integration.</p>
+            </div>
+        </div>
+
+        <section>
+            <h2>Quick Start</h2>
+            <div class="code-block">
+pip install -r requirements.txt<br>
+export POLY_PRIVATE_KEY=your_metamask_private_key<br>
+export POLY_SAFE_ADDRESS=0xYourPolymarketSafeAddress<br>
+python examples/quickstart.py
+            </div>
+        </section>
+
+        <section>
+            <h2>Project Structure</h2>
+            <table>
+                <tr><th>Directory</th><th>Description</th></tr>
+                <tr><td><code>src/</code></td><td>Core library (TradingBot, Config, API clients, signing)</td></tr>
+                <tr><td><code>strategies/</code></td><td>Trading strategies (Flash Crash, Orderbook TUI)</td></tr>
+                <tr><td><code>examples/</code></td><td>Example code (quickstart, basic trading, custom strategies)</td></tr>
+                <tr><td><code>tests/</code></td><td>Unit tests with 89 test cases</td></tr>
+                <tr><td><code>scripts/</code></td><td>Utility scripts (setup, run, integration tests)</td></tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>Trading Strategies</h2>
+            <h3 style="color:#c9d1d9;margin:1rem 0 0.5rem;">Flash Crash Strategy</h3>
+            <p style="margin-bottom:1rem;">Monitors 15-minute Up/Down markets for sudden probability drops and executes trades automatically.</p>
+            <div class="code-block">
+python strategies/flash_crash_strategy.py --coin BTC --drop 0.30 --size 10
+            </div>
+            <p><strong>Options:</strong></p>
+            <table>
+                <tr><th>Flag</th><th>Default</th><th>Description</th></tr>
+                <tr><td><code>--coin</code></td><td>ETH</td><td>BTC, ETH, SOL, XRP</td></tr>
+                <tr><td><code>--drop</code></td><td>0.30</td><td>Drop threshold (absolute change)</td></tr>
+                <tr><td><code>--size</code></td><td>5.0</td><td>Trade size in USDC</td></tr>
+                <tr><td><code>--take-profit</code></td><td>0.10</td><td>Take profit in dollars</td></tr>
+                <tr><td><code>--stop-loss</code></td><td>0.05</td><td>Stop loss in dollars</td></tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>Technology Stack</h2>
+            <div>
+                <span class="badge">Python 3.10</span>
+                <span class="badge green">WebSocket</span>
+                <span class="badge purple">EIP-712 Signing</span>
+                <span class="badge">PBKDF2 + Fernet</span>
+                <span class="badge green">pytest</span>
+                <span class="badge purple">GitHub Actions CI/CD</span>
+                <span class="badge">Black</span>
+                <span class="badge green">Flake8</span>
+                <span class="badge purple">mypy</span>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>MIT License &mdash; <a href="https://github.com/discountry/polymarket-trading-bot">Polymarket Trading Bot</a></p>
+    </footer>
+</body>
+</html>
